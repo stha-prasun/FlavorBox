@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
-import Visit from "./visit";
 import Reservation from "./Reservation";
+import Visits from "./Visits";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
 
       <div className="flex flex-col md:flex-row gap-4">
         <div className="md:w-1/2">
-          <Visit />
+          <Visits />
         </div>
         <div className="md:w-1/2">
           <Reservation />

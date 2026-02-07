@@ -1,6 +1,4 @@
-import React from "react";
-
-const Visit = () => {
+const Visits = () => {
   return (
     <div className="w-full p-4 md:p-6">
       <h2 className="text-2xl font-bold mb-2">Visit Us</h2>
@@ -56,4 +54,4 @@ const Visit = () => {
   );
 };
 
-export default Visit;
+export default Visits;
