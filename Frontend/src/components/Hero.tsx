@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import toast from "react-hot-toast";
 
 /* ===== DISCOUNT CHANCES ===== */
 const discountChances = [
@@ -41,13 +42,14 @@ const Hero = () => {
         setTimeout(() => setShowConfetti(false), 3000); // 3 sec confetti
       }
 
-      (document.getElementById("discount_modal") as HTMLDialogElement)?.showModal();
+      (
+        document.getElementById("discount_modal") as HTMLDialogElement
+      )?.showModal();
     }, 700); // shake duration
   };
 
   return (
     <section className="min-h-[calc(100vh-70px)] flex flex-col items-center justify-center text-center px-4 bg-linear-to-b from-[#1f1c1c] to-[#2b2727]">
-
       {/* Confetti */}
       {showConfetti && <Confetti recycle={false} numberOfPieces={150} />}
 
@@ -58,7 +60,8 @@ const Hero = () => {
 
       {/* Subheading */}
       <p className="text-gray-300 max-w-xl mb-12">
-        Try your luck and win instant discounts on your next visit to Malibu Madness!
+        Try your luck and win instant discounts on your next visit to Malibu
+        Madness!
       </p>
 
       {/* Card */}
@@ -68,9 +71,7 @@ const Hero = () => {
         ${shaking ? "animate-shake" : ""}`}
       >
         <div className="text-orange-500 text-5xl mb-3">🎁</div>
-        <span className="text-lg font-semibold text-black">
-          Malibu Madness
-        </span>
+        <span className="text-lg font-semibold text-black">Malibu Madness</span>
       </div>
 
       {/* Shake Button */}
@@ -86,7 +87,6 @@ const Hero = () => {
       {/* ===== MODAL ===== */}
       <dialog id="discount_modal" className="modal">
         <div className="modal-box max-w-md p-6">
-
           {/* Discount Header */}
           <div className="mb-6 rounded-xl border border-cyan-400 bg-cyan-50 py-5 text-center">
             <p className="text-sm text-gray-500">{result.label}</p>
@@ -97,16 +97,28 @@ const Hero = () => {
 
           {/* Form */}
           <div className="space-y-4">
-            <input type="text" placeholder="John Doe" className="input input-bordered w-full" />
+            <input
+              type="text"
+              placeholder="John Doe"
+              className="input input-bordered w-full"
+            />
 
             <div>
-              <input type="tel" placeholder="(555) 123-4567" className="input input-bordered w-full" />
+              <input
+                type="tel"
+                placeholder="(555) 123-4567"
+                className="input input-bordered w-full"
+              />
               <p className="text-xs text-gray-400 mt-1">
                 We may contact you about your experience
               </p>
             </div>
 
-            <input type="text" placeholder="Opening offer" className="input input-bordered w-full" />
+            <input
+              type="text"
+              placeholder="Opening offer"
+              className="input input-bordered w-full"
+            />
 
             <div>
               <input
@@ -115,9 +127,7 @@ const Hero = () => {
                 readOnly
                 className="input input-bordered w-full"
               />
-              <p className="text-xs text-gray-400 mt-1">
-                Discount you won
-              </p>
+              <p className="text-xs text-gray-400 mt-1">Discount you won</p>
             </div>
 
             <label className="flex items-center gap-2 text-sm text-gray-500">
@@ -126,7 +136,21 @@ const Hero = () => {
             </label>
           </div>
 
-          <button className="btn btn-warning w-full mt-6 text-white">
+          <button
+            onClick={() => {
+              // Close the modal
+              const modal = document.getElementById(
+                "discount_modal",
+              ) as HTMLDialogElement;
+              modal?.close();
+
+              // Show toast after modal is closed
+              setTimeout(() => {
+                toast.success("Discount Claimed Successfully!");
+              }, 100); // small delay to ensure modal closes first
+            }}
+            className="btn btn-warning w-full mt-6 text-white"
+          >
             Claim My Discount
           </button>
         </div>
