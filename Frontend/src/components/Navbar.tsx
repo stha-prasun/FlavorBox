@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  const scrollToReservation = () => {
+    const element = document.getElementById("reservation");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav className="h-17.5 px-4 sm:px-6 md:px-10 flex items-center justify-between bg-white">
       
@@ -13,7 +19,10 @@ const Navbar = () => {
       </Link>
 
       {/* Center (hide on small screens) */}
-      <div className="hidden md:block text-sm font-medium text-black hover:cursor-pointer">
+      <div
+        className="hidden md:block text-sm font-medium text-black hover:cursor-pointer"
+        onClick={scrollToReservation}
+      >
         Contact Reservations
       </div>
 
