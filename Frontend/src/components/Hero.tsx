@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Confetti from "react-confetti";
 import toast from "react-hot-toast";
 
