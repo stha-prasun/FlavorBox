@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="h-[70px] px-4 sm:px-6 md:px-10 flex items-center justify-between bg-white">
+    <nav className="h-17.5 px-4 sm:px-6 md:px-10 flex items-center justify-between bg-white">
       
       {/* Left */}
       <Link
