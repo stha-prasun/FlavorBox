@@ -98,7 +98,6 @@ const Hero = () => {
           {/* Form */}
           <div className="space-y-4">
             <input type="text" placeholder="John Doe" className="input input-bordered w-full" />
-            <input type="email" placeholder="you@example.com" className="input input-bordered w-full" />
 
             <div>
               <input type="tel" placeholder="(555) 123-4567" className="input input-bordered w-full" />
