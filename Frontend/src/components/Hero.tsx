@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 
 /* ===== DISCOUNT CHANCES ===== */
 const discountChances = [
@@ -24,6 +25,7 @@ const getRandomDiscount = () => {
 const Hero = () => {
   const [result, setResult] = useState({ label: "", discount: 0 });
   const [shaking, setShaking] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const openModal = () => {
     setShaking(true);
@@ -32,12 +34,22 @@ const Hero = () => {
       const selected = getRandomDiscount();
       setResult(selected);
       setShaking(false);
+
+      // Show confetti only for 10% or 15% wins
+      if (selected.discount >= 10) {
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 3000); // 3 sec confetti
+      }
+
       (document.getElementById("discount_modal") as HTMLDialogElement)?.showModal();
-    }, 700); // duration of shake
+    }, 700); // shake duration
   };
 
   return (
     <section className="min-h-[calc(100vh-70px)] flex flex-col items-center justify-center text-center px-4 bg-linear-to-b from-[#1f1c1c] to-[#2b2727]">
+
+      {/* Confetti */}
+      {showConfetti && <Confetti recycle={false} numberOfPieces={150} />}
 
       {/* Heading */}
       <h1 className="text-5xl font-bold text-white mb-3">
