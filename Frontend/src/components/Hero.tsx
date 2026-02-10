@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 /* ===== DISCOUNT CHANCES ===== */
 const discountChances = [
-  { label: "Better luck next time", discount: 0, chance: 18 },
   { label: "Small savings", discount: 5, chance: 35 },
   { label: "Saved some pocket money", discount: 10, chance: 30 },
   { label: "Jackpot", discount: 15, chance: 17 },
@@ -20,7 +19,7 @@ const getRandomDiscount = () => {
     if (random < cumulative) return item;
   }
 
-  return discountChances[0];
+  return discountChances[discountChances.length - 1];
 };
 
 const Hero = () => {
